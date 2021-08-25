@@ -1,7 +1,26 @@
+import { useState } from 'react';
 import '../styles/reset.css';
 import '../styles/App.css';
 
 function App() {
+    const [todos, setTodos] = useState([
+        {
+            id: 1,
+            title: 'Finish React Series',
+            isComplete: false,
+        },
+        {
+            id: 2,
+            title: 'Go food shopping',
+            isComplete: true,
+        },
+        {
+            id: 3,
+            title: 'Take over world',
+            isComplete: false,
+        }
+    ]);
+
     return (
         <div className="todo-app-container">
             <div className="todo-app">
