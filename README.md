@@ -4,11 +4,11 @@
 ## Available Scripts
 In the project directory, you can run:
 
-### `yarn start`
+### `npm start` `yarn start`
 Runs the app in the development mode.\
 
-### `yarn test`
+### `npm test` `yarn test`
 Launches the test runner in the interactive watch mode.\
 
-### `yarn build`
+### `npm build` `yarn build`
 Builds the app for production to the `build` folder.\
