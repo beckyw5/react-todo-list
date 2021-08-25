@@ -27,10 +27,12 @@ function App() {
         setTodoInput(event.target.value);
     }
 
-    function addTodo() {
+    function addTodo(event) {
+        event.preventDefault();
+
         setTodos([...todos, {
             id: 4,
-            title: 'Testing',
+            title: todoInput,
             isComplete: false,
         },
         ]);
