@@ -21,11 +21,20 @@ function App() {
         }
     ]);
 
+    function addTodo() {
+        setTodos([...todos, {
+            id: 4,
+            title: 'Testing',
+            isComplete: false,
+        },
+        ]);
+    }
+
     return (
         <div className="todo-app-container">
             <div className="todo-app">
                 <h2>Todo App</h2>
-                <form action="#">
+                <form action="#" onSubmit={addTodo}>
                     <input
                         type="text"
                         className="todo-input"
