@@ -22,6 +22,7 @@ function App() {
     ]);
 
     const [todoInput, setTodoInput] = useState('');
+    const [idForTodo, setIdForTodo] = useState(4);
 
     function handleInput(event) {
         setTodoInput(event.target.value);
@@ -31,11 +32,14 @@ function App() {
         event.preventDefault();
 
         setTodos([...todos, {
-            id: 4,
+            id: idForTodo,
             title: todoInput,
             isComplete: false,
         },
         ]);
+
+        setTodoInput('');
+        setIdForTodo(previousIdForTodo => previousIdForTodo + 1);
     }
 
     return (
