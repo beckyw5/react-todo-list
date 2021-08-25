@@ -1,6 +1,29 @@
 import React, {Component} from 'react';
 
-class AppClass extends Component {
+export default class AppClass extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            todos: [
+                {
+                    id: 1,
+                    title: 'Finish React Series',
+                    isComplete: false,
+                },
+                {
+                    id: 2,
+                    title: 'Go food shopping',
+                    isComplete: true,
+                },
+                {
+                    id: 3,
+                    title: 'Take over world',
+                    isComplete: false,
+                }
+            ]
+        };
+    }
+
     render() {
         return (
             <div className="todo-app-container">
@@ -15,7 +38,7 @@ class AppClass extends Component {
                     </form>
 
                     <ul className="todo-list">
-                        {todos.map((todo, index) => (
+                        {this.state.todos.map((todo, index) => (
                             <li className="todo-item-container">
                                 <div className="todo-item">
                                     <input type="checkbox"/>
@@ -66,5 +89,3 @@ class AppClass extends Component {
         );
     }
 }
-
-export default AppClass;
