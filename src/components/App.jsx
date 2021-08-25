@@ -21,6 +21,12 @@ function App() {
         }
     ]);
 
+    const [todoInput, setTodoInput] = useState('');
+
+    function handleInput(event) {
+        setTodoInput(event.target.value);
+    }
+
     function addTodo() {
         setTodos([...todos, {
             id: 4,
@@ -37,6 +43,8 @@ function App() {
                 <form action="#" onSubmit={addTodo}>
                     <input
                         type="text"
+                        value={todoInput}
+                        onChange={handleInput}
                         className="todo-input"
                         placeholder="What do you need to do?"
                     />
