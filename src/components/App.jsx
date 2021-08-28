@@ -72,7 +72,7 @@ function App() {
                                 <span className="todo-item-label">{todo.title}</span>
                                 {/* <input type="text" className="todo-item-input" value="Finish React Series" /> */}
                             </div>
-                            <button className="x-button" onClick={deleteTodo(todo.id)}>
+                            <button className="x-button" onClick={() => deleteTodo(todo.id)}>
                                 <svg
                                     className="x-button-icon"
                                     fill="none"
