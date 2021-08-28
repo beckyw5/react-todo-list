@@ -75,6 +75,17 @@ function App() {
         setTodos(updatedTodos);
     }
 
+    function cancelEdit(event, id) {
+        const updatedTodos = todos.map(todo => {
+            if (todo.id === id) {
+                todo.isEditing = false;
+            }
+            return todo;
+        })
+
+        setTodos(updatedTodos);
+    }
+
     function updateTodo(event, id) {
         const updatedTodos = todos.map(todo => {
             if (todo.id === id) {
@@ -124,6 +135,8 @@ function App() {
                                         onKeyDown={event => {
                                             if(event.key === 'Enter') {
                                                 updateTodo(event, todo.id);
+                                            } else if (event.key === 'Escape') {
+                                                cancelEdit(event, todo.id);
                                             }
                                         }}
                                         className="todo-item-input"
