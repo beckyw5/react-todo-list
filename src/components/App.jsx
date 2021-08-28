@@ -121,6 +121,11 @@ function App() {
                                     <input
                                         type="text"
                                         onBlur={event => updateTodo(event, todo.id)}
+                                        onKeyDown={event => {
+                                            if(event.key === 'Enter') {
+                                                updateTodo(event, todo.id);
+                                            }
+                                        }}
                                         className="todo-item-input"
                                         defaultValue={todo.title}
                                         autoFocus />
