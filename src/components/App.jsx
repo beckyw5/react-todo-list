@@ -78,7 +78,8 @@ function App() {
     function updateTodo(event, id) {
         const updatedTodos = todos.map(todo => {
             if (todo.id === id) {
-                todo.isEditing = true;
+                todo.title = event.target.value;
+                todo.isEditing = false;
             }
             return todo;
         })
@@ -117,7 +118,7 @@ function App() {
                                         type="text"
                                         onBlur={(event) => updateTodo(todo.id)}
                                         className="todo-item-input"
-                                        value={todo.title}
+                                        defaultValue={todo.title}
                                         autoFocus />
                                 )}
                             </div>
