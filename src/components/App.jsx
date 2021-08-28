@@ -62,7 +62,7 @@ function App() {
 
                 <ul className="todo-list">
                     {todos.map((todo, index) => (
-                        <li className="todo-item-container">
+                        <li key={todo.id} className="todo-item-container">
                             <div className="todo-item">
                                 <input type="checkbox"/>
                                 <span className="todo-item-label">{todo.title}</span>
