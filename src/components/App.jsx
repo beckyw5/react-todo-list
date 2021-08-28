@@ -8,16 +8,19 @@ function App() {
             id: 1,
             title: 'Finish React Series',
             isComplete: false,
+            isEditing: false
         },
         {
             id: 2,
             title: 'Go food shopping',
             isComplete: true,
+            isEditing: false
         },
         {
             id: 3,
             title: 'Take over world',
             isComplete: false,
+            isEditing: false
         }
     ]);
 
@@ -53,7 +56,18 @@ function App() {
     function completeTodo(id) {
         const updatedTodos = todos.map(todo => {
             if (todo.id === id) {
-                todo.isComplete = !todo.isComplete
+                todo.isComplete = !todo.isComplete;
+            }
+            return todo;
+        })
+
+        setTodos(updatedTodos);
+    }
+
+    function markAsEditing(id) {
+        const updatedTodos = todos.map(todo => {
+            if (todo.id === id) {
+                todo.isEditing = true;
             }
             return todo;
         })
@@ -82,10 +96,17 @@ function App() {
                                 <input type="checkbox"
                                        onChange={() => completeTodo(todo.id)}
                                        checked={todo.isComplete ? true : false}/>
-                                <span className={`todo-item-label ${todo.isComplete ? 'line-through':''}`}>
+                                {!todo.isEditing ? (
+                                    <span onDoubleClick={() => markAsEditing(todo.id)}
+                                          className={`todo-item-label ${todo.isComplete ? 'line-through':''}`}>
                                     {todo.title}
-                                </span>
-                                {/* <input type="text" className="todo-item-input" value="Finish React Series" /> */}
+                                    </span>
+                                ) : (
+                                    <input
+                                        type="text"
+                                        className="todo-item-input"
+                                        value="Finish React Series" />
+                                )}
                             </div>
                             <button className="x-button" onClick={() => deleteTodo(todo.id)}>
                                 <svg
