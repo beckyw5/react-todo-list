@@ -75,6 +75,17 @@ function App() {
         setTodos(updatedTodos);
     }
 
+    function updateTodo(event, id) {
+        const updatedTodos = todos.map(todo => {
+            if (todo.id === id) {
+                todo.isEditing = true;
+            }
+            return todo;
+        })
+
+        setTodos(updatedTodos);
+    }
+
     return (
         <div className="todo-app-container">
             <div className="todo-app">
@@ -104,8 +115,10 @@ function App() {
                                 ) : (
                                     <input
                                         type="text"
+                                        onBlur={(event) => updateTodo(todo.id)}
                                         className="todo-item-input"
-                                        value="Finish React Series" />
+                                        value={todo.title}
+                                        autoFocus />
                                 )}
                             </div>
                             <button className="x-button" onClick={() => deleteTodo(todo.id)}>
