@@ -78,6 +78,13 @@ function App() {
     function updateTodo(event, id) {
         const updatedTodos = todos.map(todo => {
             if (todo.id === id) {
+
+                if (event.target.value.trim().length === 0) {
+                    console.log('empty');
+                    todo.isEditing = false;
+                    return todo;
+                }
+                console.log('not empty');
                 todo.title = event.target.value;
                 todo.isEditing = false;
             }
@@ -106,7 +113,7 @@ function App() {
                         <li key={todo.id} className="todo-item-container">
                             <div className="todo-item">
                                 <input type="checkbox"
-                                       onChange={() => completeTodo(todo.id)}
+                                       onChange={(event) => completeTodo(todo.id)}
                                        checked={todo.isComplete ? true : false}/>
                                 {!todo.isEditing ? (
                                     <span onDoubleClick={() => markAsEditing(todo.id)}
@@ -116,7 +123,7 @@ function App() {
                                 ) : (
                                     <input
                                         type="text"
-                                        onBlur={(event) => updateTodo(todo.id)}
+                                        onBlur={() => updateTodo(todo.id)}
                                         className="todo-item-input"
                                         defaultValue={todo.title}
                                         autoFocus />
