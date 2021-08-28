@@ -50,6 +50,17 @@ function App() {
         setTodos([...todos].filter(todo => todo.id !== id));
     }
 
+    function completeTodo(id) {
+        const updatedTodos = todos.map(todo => {
+            if (todo.id === id) {
+                todo.isComplete = !todo.isComplete
+            }
+            return todo;
+        })
+
+        setTodos(updatedTodos);
+    }
+
     return (
         <div className="todo-app-container">
             <div className="todo-app">
@@ -68,7 +79,9 @@ function App() {
                     {todos.map((todo, index) => (
                         <li key={todo.id} className="todo-item-container">
                             <div className="todo-item">
-                                <input type="checkbox"/>
+                                <input type="checkbox"
+                                       onChange={() => completeTodo(todo.id)}
+                                       checked={todo.isComplete ? true : false}/>
                                 <span className={`todo-item-label ${todo.isComplete ? 'line-through':''}`}>
                                     {todo.title}
                                 </span>
