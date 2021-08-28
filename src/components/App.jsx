@@ -31,6 +31,10 @@ function App() {
     function addTodo(event) {
         event.preventDefault();
 
+        if (todoInput.trim().length === 0) {
+            return;
+        }
+
         setTodos([...todos, {
             id: idForTodo,
             title: todoInput,
